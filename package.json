@@ -1,0 +1,20 @@
+{
+    "name": "fis-command-watch",
+    "version": "0.0.1",
+    "description": "watch and exec cmd",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [
+        "watch",
+        "fis",
+        "plugin",
+        "command"
+    ],
+    "dependencies" : {
+        "chokidar" : "0.8.2"
+    },
+    "author": "fouber <fouber.NET@gmail.com>",
+    "license": "MIT"
+}
