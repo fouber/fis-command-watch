@@ -8,6 +8,7 @@ exports.register = function(commander){
     var cwd = process.cwd();
     commander
         .option('-r, --root <path>', 'document root', cwd, String)
+        .option('--timeout <msec>', 'command exec timeout', 0, parseInt)
         .option('--include <glob>', 'clean include filter', String)
         .option('--exclude <glob>', 'clean exclude filter', String)
         .action(function(){
@@ -48,7 +49,7 @@ exports.register = function(commander){
                         running = true;
                         process.stdout.write('\n Ω '.yellow.bold + cmd);
                         var now = Date.now();
-                        exec(cmd, {cwd:cwd}, function(err, stdout, stderr){
+                        exec(cmd, {cwd: cwd, timeout: options.timeout || 0}, function(err, stdout, stderr){
                             if(err === null){
                                 if(stderr) process.stderr.write('\n - ' + String(stderr).replace(/[\r\n]+$/, '').yellow);
                                 if(stdout) process.stdout.write('\n - ' + String(stdout).replace(/[\r\n]+$/, '').grey);
